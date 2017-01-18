@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-xs-2 col-offset-6">
+        <img class="profile-img" *ngIf="identity && identity.imageUrl" [src]="identity.imageUrl" />
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <button type="button" class="btn btn-default" (click)="add()">Default</button>
+        <ul class="list-group">
+            <li *ngFor="let poll of polls | async" class="list-group-item">{{poll|json}}</li>
+        </ul>
+    </div>
+</div>
