@@ -1,13 +1,51 @@
-<div class="row">
-    <div class="col-xs-2 col-offset-6">
-        <img class="profile-img" *ngIf="identity && identity.imageUrl" [src]="identity.imageUrl" />
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><img class="profile-img" *ngIf="identity && identity.imageUrl" [src]="identity.imageUrl" /></li>
+                <li><a>Exit</a></li>
+            </ul>
+        </div>
     </div>
+</nav>
+<span class="some-margin-top"></span>
+<div class="page-header">
+    <h1><button class="btn btn-default" (click)="add()">Open a new poll</button></h1>
 </div>
-<div class="row">
-    <div class="col-xs-12">
-        <button type="button" class="btn btn-default" (click)="add()">Default</button>
-        <ul class="list-group">
-            <li *ngFor="let poll of polls | async" class="list-group-item">{{poll|json}}</li>
-        </ul>
+<div class="container">
+    <div class="row" *ngFor="let i of pollRows">
+        <div class="col-xs-4">
+            <div *ngIf="polls[i*3]" class="animated fadeIn">
+                <a href="#" class="thumbnail">
+                    <img class="profile-img" *ngIf="identity && identity.imageUrl" [src]="identity.imageUrl" />
+                </a>
+                <div class="caption">
+                    <p>{{polls[i*3]?.name}} <span class="votes-badge badge pull-right">{{polls[i*3]?.votes.length}} votes <i class="btn-remove fa fa-remove pull-right"></i></span></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div *ngIf="polls[i*3+1]" class="animated fadeIn">
+                <a href="#" class="thumbnail">
+                    <img class="profile-img" *ngIf="identity && identity.imageUrl" [src]="identity.imageUrl" />
+                </a>
+                <div class="caption">
+                    <p>{{polls[i*3+1]?.name}} <span class="votes-badge badge pull-right">{{polls[i*3+1]?.votes.length}} votes <i class="btn-remove fa fa-remove pull-right"></i></span></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div *ngIf="polls[i*3+2]" class="animated fadeIn">
+                <a href="#" class="thumbnail">
+                    <img class="profile-img" *ngIf="identity && identity.imageUrl" [src]="identity.imageUrl" />
+                </a>
+                <div class="caption">
+                    <p>{{polls[i*3+2]?.name}} <span class="votes-badge badge pull-right">{{polls[i*3+2]?.votes.length}} votes <i class="btn-remove fa fa-remove pull-right"></i></span></p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

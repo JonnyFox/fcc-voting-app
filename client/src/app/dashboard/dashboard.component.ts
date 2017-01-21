@@ -12,7 +12,9 @@ import { Identity, Poll } from '../shared/models';
 export class DashboardComponent implements OnInit {
 
   public identity: Identity;
-  public polls: Observable<Poll[]>;
+  public polls: Poll[];
+
+  public pollRows: number[];
 
   constructor(
     identitySvc: IdentityService,
@@ -23,11 +25,13 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.refresh();
-    let y = 9;
   }
 
   refresh(): void {
-    this.polls = this.pollService.getAll();
+    this.pollService.getAll().subscribe(res => {
+      this.polls = res;
+      this.updatePollRows(this.polls.length);
+    });
   }
 
   add(): void {
@@ -36,8 +40,16 @@ export class DashboardComponent implements OnInit {
       name: 'Jonny',
       options: ['1', '2', '3'],
       votes: [12, 2, 0]
-    }).subscribe(res => {
-      this.refresh();
+    }).flatMap(res => this.pollService.getById(res)).subscribe(res => {
+      this.polls.push(res);
+      this.updatePollRows(this.polls.length);
     });
+  }
+
+  updatePollRows(pollsLenght: number): void {
+    this.pollRows = [];
+    for (let i = 0; i < Math.ceil(pollsLenght / 3); i++) {
+      this.pollRows.push(i);
+    }
   }
 }

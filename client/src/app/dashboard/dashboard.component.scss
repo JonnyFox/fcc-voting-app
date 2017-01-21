@@ -1,5 +1,18 @@
 .profile-img {
     border-radius: 50%;
-    width: 6rem;
-    height: 6rem;
+    width: 5rem;
+    height: 5rem;
+}
+
+.btn-remove {
+    transition: width 0.5s;
+    width: 0px;
+    opacity: 0;
+}
+
+.votes-badge:hover {
+    .btn-remove {
+        width: 10px;
+        opacity: 1;
+    }
 }

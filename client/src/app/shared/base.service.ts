@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { Observable,  } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export abstract class BaseService<T> {
@@ -19,7 +19,7 @@ export abstract class BaseService<T> {
             .catch(this.handleError);
     }
 
-    post(entity: T): Observable<T> {
+    post(entity: T): Observable<string> {
         return this.http.post(this.serviceUrl, entity)
             .map(this.extractData)
             .catch(this.handleError);
