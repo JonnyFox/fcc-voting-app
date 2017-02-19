@@ -7,6 +7,7 @@ export class User {
 export class Poll {
     authorId: string;
     name: string;
+    description: string;
     options: string[];
     votes: number[];
 }

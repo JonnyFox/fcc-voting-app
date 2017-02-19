@@ -1,3 +1,16 @@
-<div class="container">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><img class="profile-img" *ngIf="identity && identity.imageUrl" [src]="identity.imageUrl" /></li>
+                <li><a>Exit</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container some-margin-top">
     <router-outlet></router-outlet>
 </div>

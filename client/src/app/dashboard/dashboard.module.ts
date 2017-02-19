@@ -4,19 +4,23 @@ import { RouterModule } from '@angular/router';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
-import { PollService } from '../shared/services';
+import { PollDetailComponent } from './poll-detail.component';
+import { PollDetailResolver } from './shared/poll-detail-resolver.service';
 
+import { PollService } from '../shared/services';
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,
+    PollDetailComponent
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule
   ],
   providers : [
-    PollService
+    PollService,
+    PollDetailResolver
   ],
   exports: [
     RouterModule

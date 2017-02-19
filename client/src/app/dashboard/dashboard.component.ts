@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, Observer } from 'rxjs';
 
 import { IdentityService, PollService } from '../shared/services';
-import { Identity, Poll } from '../shared/models';
+import { Poll } from '../shared/models';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,23 +12,19 @@ import { Identity, Poll } from '../shared/models';
 })
 export class DashboardComponent implements OnInit {
 
-  public identity: Identity;
   public polls: Poll[];
-
   public pollRows: number[];
 
   constructor(
-    identitySvc: IdentityService,
-    private pollService: PollService
-  ) {
-    this.identity = identitySvc.identity;
-  }
+    private pollService: PollService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.refresh();
   }
 
-  refresh(): void {
+  private refresh(): void {
     this.pollService.getAll().subscribe(res => {
       this.polls = res;
       this.updatePollRows(this.polls.length);
@@ -46,7 +43,22 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  updatePollRows(pollsLenght: number): void {
+  public delete(index: number): void {
+    this.pollService.delete(this.polls[index]._id)
+      .subscribe(res => {
+        this.polls.splice(index, 1);
+      });
+  }
+
+  public goToDetail(index: number): void {
+    this.router.navigate([`./poll/${this.polls[index]._id}`]);
+  }
+
+  public pollUrl(index: number): string {
+    return `poll/${this.polls[index]._id}`;
+  }
+
+  private updatePollRows(pollsLenght: number): void {
     this.pollRows = [];
     for (let i = 0; i < Math.ceil(pollsLenght / 3); i++) {
       this.pollRows.push(i);

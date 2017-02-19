@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
+import { IdentityService } from './shared/identity.service';
+import { Identity } from './shared/models';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app works!';
+
+  public identity: Identity;
+
+  constructor(
+    identitySvc: IdentityService
+  ) {
+    this.identity = identitySvc.identity;
+  }
 }

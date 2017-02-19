@@ -12,6 +12,7 @@ export class User {
 }
 
 export class Poll {
+    _id?: string;
     authorId: string;
     name: string;
     options: string[];

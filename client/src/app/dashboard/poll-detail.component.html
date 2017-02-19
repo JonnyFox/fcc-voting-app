@@ -1,0 +1,13 @@
+<div class="page-header">
+    <h1>{{poll.name}}<small>{{poll.description}}</small></h1>
+</div>
+<div class="container">
+    <div class="col-xs-6">
+        <select class="combobox">
+                <option *ngFor="let opt of poll.options" value="opt">{{opt}}</option>
+        </select>
+    </div>
+    <div class="col-xs-6">
+        Image
+    </div>
+</div>
