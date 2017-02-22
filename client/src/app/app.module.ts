@@ -1,3 +1,4 @@
+import { MaterialModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -11,21 +12,22 @@ import { IdentityService, TokenService } from './shared/services';
 import { DashboardModule } from './dashboard/dashboard.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    AppRoutingModule,
-    DashboardModule
-  ],
-  providers: [
-    IdentityService,
-    TokenService
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        LoginComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpModule,
+        AppRoutingModule,
+        DashboardModule,
+        MaterialModule
+    ],
+    providers: [
+        IdentityService,
+        TokenService
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
