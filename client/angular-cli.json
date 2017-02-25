@@ -21,7 +21,8 @@
             "../node_modules/mdi/css/materialdesignicons.min.css",
             "../node_modules/bootstrap/dist/css/bootstrap.min.css",
             "../node_modules/animate.css/animate.min.css",
-            "styles.scss"
+            "styles.scss",
+            "app-theme.scss"
         ],
         "scripts": [],
         "environmentSource": "environments/environment.ts",

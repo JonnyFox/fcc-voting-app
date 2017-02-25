@@ -1,16 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
-
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,700');
+html,
 body {
-    background-color: #333;
-    color: #efefef;
-    font-size: 14px;
-}
-
-.some-margin-top {
-    margin-top: 7rem;
-}
-
-.combobox {
-    background-color: #333;
-    min-width: 10rem;
+    height: 100%;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
 }

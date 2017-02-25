@@ -1,42 +1,28 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><img class="profile-img" *ngIf="identity && identity.imageUrl" [src]="identity.imageUrl" /></li>
-                <li><a>Exit</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<span class="some-margin-top"></span>
-<div class="page-header">
-    <h1><i class="mdi mdi-poll mdi-36px"></i><button class="btn btn-default" (click)="add()">Open a new poll</button></h1>
-</div>
 <div class="container">
     <div class="row" *ngFor="let i of pollRows">
         <div class="col-xs-4">
-            <div *ngIf="polls[i*3]" class="animated fadeIn">
-                <div class="caption">
-                    <p>{{polls[i*3]?.name}} <span class="votes-badge badge pull-right">{{polls[i*3]?.votes.length}} votes <i class="btn-remove mdi mdi-minus pull-right"></i></span></p>
-                </div>
-            </div>
+            <md-card *ngIf="polls[i*3]" class="poll-card animated fadeIn">
+                <span class="caption">{{polls[i*3]?.name}}</span>
+                <md-chip-list class="pull-right">
+                    <md-chip selected="true" color="primary" class="votes-badge">{{polls[i*3]?.votes.length}} votes<i class="btn-remove mdi mdi-delete pull-right mdi-18px"></i></md-chip>
+                </md-chip-list>
+            </md-card>
         </div>
-        <div class="col-xs-4">
-            <div *ngIf="polls[i*3+1]" class="animated fadeIn">
-                <div class="caption">
-                    <p>{{polls[i*3+1]?.name}} <span class="votes-badge badge pull-right">{{polls[i*3+1]?.votes.length}} votes <i class="btn-remove mdi mdi-delete pull-right"></i></span></p>
-                </div>
-            </div>
+        <div class=" col-xs-4 ">
+            <md-card *ngIf="polls[i*3+1] " class="poll-card animated fadeIn">
+                <span class="caption">{{polls[i*3+1]?.name}}</span>
+                <md-chip-list class="pull-right">
+                    <md-chip selected="true" color="primary" class="votes-badge">{{polls[i*3+1]?.votes.length}} votes<i class="btn-remove mdi mdi-delete pull-right mdi-18px"></i></md-chip>
+                </md-chip-list>
+            </md-card>
         </div>
-        <div class="col-xs-4">
-            <div *ngIf="polls[i*3+2]" class="animated fadeIn">
-                <div class="caption">
-                    <p>{{polls[i*3+2]?.name}} <span class="votes-badge badge pull-right">{{polls[i*3+2]?.votes.length}} votes <i class="btn-remove fa fa-remove pull-right"></i></span></p>
-                </div>
-            </div>
+        <div class="col-xs-4 ">
+            <md-card *ngIf="polls[i*3+2] " class="poll-card animated fadeIn">
+                <span class="caption">{{polls[i*3+2]?.name}}</span>
+                <md-chip-list class="pull-right">
+                    <md-chip selected="true" color="primary" class="votes-badge">{{polls[i*3+2]?.votes.length}} votes<i class="btn-remove mdi mdi-delete pull-right mdi-18px"></i></md-chip>
+                </md-chip-list>
+            </md-card>
         </div>
     </div>
 </div>
