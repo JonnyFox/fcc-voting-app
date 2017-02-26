@@ -5,4 +5,12 @@ body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
+    color: #fff;
+}
+
+.speed-dial {
+    position: fixed !important;
+    right: 20px;
+    bottom: 20px;
+    line-height: 56px !important;
 }

@@ -1,3 +1,5 @@
+import { PollDialogComponent } from './poll-dialog/poll-dialog.component';
+import { MdDialog } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Observer } from 'rxjs';
@@ -17,7 +19,8 @@ export class DashboardComponent implements OnInit {
 
     constructor(
         private pollService: PollService,
-        private router: Router
+        private router: Router,
+        private dialogService: MdDialog
     ) { }
 
     ngOnInit(): void {
@@ -32,18 +35,24 @@ export class DashboardComponent implements OnInit {
     }
 
     add(): void {
-        this.pollService.post({
-            authorId: '1d',
-            name: 'Jonny',
-            options: ['1', '2', '3'],
-            votes: [12, 2, 0]
-        }).flatMap(res => this.pollService.getById(res)).subscribe(res => {
-            this.polls.push(res);
-            this.updatePollRows(this.polls.length);
+        let pollDialog = this.dialogService.open(PollDialogComponent);
+        pollDialog.afterClosed().subscribe(res => {
+            if (res && res !== '') {
+                this.pollService.post({
+                    authorId: '1d',
+                    name: res,
+                    options: ['1', '2', '3'],
+                    votes: [12, 2, 0]
+                }).flatMap(res => this.pollService.getById(res)).subscribe(res => {
+                    this.polls.push(res);
+                    this.updatePollRows(this.polls.length);
+                });
+            }
         });
     }
 
-    public delete(index: number): void {
+    public delete(event: Event, index: number): void {
+        event.stopPropagation();
         this.pollService.delete(this.polls[index]._id)
             .subscribe(res => {
                 this.polls.splice(index, 1);

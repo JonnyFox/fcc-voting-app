@@ -1,0 +1,10 @@
+<h3>Add new Poll</h3>
+<div>
+    <md-input-container>
+        <input mdInput placeholder="Poll name" [(ngModel)]="pollName">
+    </md-input-container>
+</div>
+<div>
+    <button md-button color="accent" (click)="add()">Ok</button>
+    <button md-button color="accent" (click)="cancel()">Cancel</button>
+</div>

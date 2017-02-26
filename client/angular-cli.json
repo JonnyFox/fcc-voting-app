@@ -18,11 +18,11 @@
         "tsconfig": "tsconfig.json",
         "prefix": "app",
         "styles": [
-            "../node_modules/mdi/css/materialdesignicons.min.css",
             "../node_modules/bootstrap/dist/css/bootstrap.min.css",
             "../node_modules/animate.css/animate.min.css",
-            "styles.scss",
-            "app-theme.scss"
+            "../node_modules/mdi/css/materialdesignicons.min.css",
+            "app-theme.scss",
+            "styles.scss"
         ],
         "scripts": [],
         "environmentSource": "environments/environment.ts",
