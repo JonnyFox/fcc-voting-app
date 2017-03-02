@@ -8,11 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PollDialogComponent {
     public pollName: string;
+    public options: string;
 
     constructor(private dialogRef: MdDialogRef<PollDialogComponent>) { }
 
     public add(): void {
-        this.dialogRef.close(this.pollName);
+        const optionsArray = this.options.split(',');
+        this.dialogRef.close({ name: this.pollName, options: optionsArray });
     }
 
     public cancel(): void {

@@ -1,3 +1,4 @@
+import { PollDialogResult } from './shared/poll-dialog-result';
 import { PollDialogComponent } from './poll-dialog/poll-dialog.component';
 import { MdDialog } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
@@ -20,7 +21,8 @@ export class DashboardComponent implements OnInit {
     constructor(
         private pollService: PollService,
         private router: Router,
-        private dialogService: MdDialog
+        private dialogService: MdDialog,
+        private identitySvc: IdentityService
     ) { }
 
     ngOnInit(): void {
@@ -36,13 +38,13 @@ export class DashboardComponent implements OnInit {
 
     add(): void {
         let pollDialog = this.dialogService.open(PollDialogComponent);
-        pollDialog.afterClosed().subscribe(res => {
-            if (res && res !== '') {
+        pollDialog.afterClosed().subscribe((res: PollDialogResult) => {
+            if (res && res.name !== '' && res.options.length > 1) {
                 this.pollService.post({
-                    authorId: '1d',
-                    name: res,
-                    options: ['1', '2', '3'],
-                    votes: [12, 2, 0]
+                    authorId: this.identitySvc.identity.id,
+                    name: res.name,
+                    options: res.options,
+                    votes: []
                 }).flatMap(res => this.pollService.getById(res)).subscribe(res => {
                     this.polls.push(res);
                     this.updatePollRows(this.polls.length);

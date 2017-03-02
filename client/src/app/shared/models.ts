@@ -1,5 +1,5 @@
 export interface Identity {
-    id: number;
+    id: string;
     name: string;
     email: string;
     imageUrl: string;

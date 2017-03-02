@@ -1,0 +1,16 @@
+<div class="container">
+    <h1>{{poll.name}}<small>{{poll.description}}</small></h1>
+    <hr>
+    <md-card>
+        <div class="col-xs-4">
+            <md-select class="combobox" [(ngModel)]="selectedOption">
+                <md-option *ngFor="let opt of poll.options" [value]="opt">{{opt}}</md-option>
+            </md-select>
+            <button md-button (click)="vote()">Vote!</button>
+        </div>
+        <div class="col-xs-8">
+            <div>Image</div>
+        </div>
+        <div class="clear-both"></div>
+    </md-card>
+</div>
