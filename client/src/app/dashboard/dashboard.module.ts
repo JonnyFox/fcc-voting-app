@@ -1,3 +1,4 @@
+import { ChartsModule } from 'ng2-charts/charts/charts';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule, MdSnackBarModule } from '@angular/material';
 import { NgModule } from '@angular/core';
@@ -19,6 +20,7 @@ import { PollDialogComponent } from "./poll-dialog/poll-dialog.component";
         PollDialogComponent
     ],
     imports: [
+        ChartsModule,
         CommonModule,
         DashboardRoutingModule,
         MaterialModule,

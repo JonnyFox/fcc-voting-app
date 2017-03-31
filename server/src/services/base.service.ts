@@ -33,6 +33,7 @@ export abstract class BaseService<T> {
 
   public async update(objectId: string, entity: T): Promise<T> {
     let collection = await this.dbService.getCollection(this.collectionType);
+    delete (<any>entity)._id;
     await collection.updateOne({ _id: new ObjectID(objectId) }, entity);
     return this.findOneById(objectId);
   }

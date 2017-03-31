@@ -36,16 +36,18 @@ export class DashboardComponent implements OnInit {
         });
     }
 
-    add(): void {
+    public add(): void {
         let pollDialog = this.dialogService.open(PollDialogComponent);
         pollDialog.afterClosed().subscribe((res: PollDialogResult) => {
             if (res && res.name !== '' && res.options.length > 1) {
-                this.pollService.post({
+                let poll = {
                     authorId: this.identitySvc.identity.id,
                     name: res.name,
                     options: res.options,
-                    votes: []
-                }).flatMap(res => this.pollService.getById(res)).subscribe(res => {
+                    votes:  res.options.map(v => 0)
+                };
+
+                this.pollService.post(poll).flatMap(res => this.pollService.getById(res)).subscribe(res => {
                     this.polls.push(res);
                     this.updatePollRows(this.polls.length);
                 });
@@ -67,6 +69,10 @@ export class DashboardComponent implements OnInit {
 
     public pollUrl(index: number): string {
         return `poll/${this.polls[index]._id}`;
+    }
+
+    public getPollVotes(poll: Poll) { 
+        return poll.votes ? poll.votes.reduce((acc, v) => acc + v) : 0;
     }
 
     private updatePollRows(pollsLenght: number): void {

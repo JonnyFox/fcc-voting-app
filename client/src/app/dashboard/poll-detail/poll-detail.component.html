@@ -9,7 +9,12 @@
             <button md-button (click)="vote()">Vote!</button>
         </div>
         <div class="col-xs-8">
-            <div>Image</div>
+            <div style="display: block">
+                <canvas baseChart
+                    [data]="poll.votes"
+                    [labels]="poll.options"
+                    chartType="doughnut"></canvas>
+            </div>
         </div>
         <div class="clear-both"></div>
     </md-card>

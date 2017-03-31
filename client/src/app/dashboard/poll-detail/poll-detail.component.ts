@@ -14,7 +14,7 @@ export class PollDetailComponent implements OnInit {
 
     public poll: Poll;
     private selectedOption: string;
-
+    
     constructor(
         private route: ActivatedRoute,
         private router: Router,
@@ -32,6 +32,7 @@ export class PollDetailComponent implements OnInit {
     public vote(): void {
         this.poll.votes[this.poll.options.indexOf(this.selectedOption)]++;
         this.pollService.put(this.poll._id, this.poll).subscribe(res => {
+            this.poll = res;
             this.mdSnackBar.open(`You voted ${this.selectedOption}`);
         });
     }
