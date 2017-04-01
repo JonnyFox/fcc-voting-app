@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>{{poll.name}}<small>{{poll.description}}</small></h1>
+    <h1><a routerLink="/dashboard" style="text-decoration: none; color: white;"><span class="mdi mdi-arrow-left" rou></span></a> {{poll.name}} <small style="float: right;"> {{getVotes()}} votes</small></h1>
     <hr>
     <md-card>
         <div class="col-xs-4">
@@ -9,7 +9,7 @@
             <button md-button (click)="vote()">Vote!</button>
         </div>
         <div class="col-xs-8">
-            <div style="display: block">
+            <div style="display: block; float:right; width: 500px; height: 500px">
                 <canvas baseChart
                     [data]="poll.votes"
                     [labels]="poll.options"

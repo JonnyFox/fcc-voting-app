@@ -47,10 +47,12 @@ export class DashboardComponent implements OnInit {
                     votes:  res.options.map(v => 0)
                 };
 
-                this.pollService.post(poll).flatMap(res => this.pollService.getById(res)).subscribe(res => {
-                    this.polls.push(res);
-                    this.updatePollRows(this.polls.length);
-                });
+                this.pollService.post(poll)
+                    .flatMap(res => this.pollService.getById(res))
+                    .subscribe(res => {
+                        this.polls.push(res);
+                        this.updatePollRows(this.polls.length);
+                    });
             }
         });
     }

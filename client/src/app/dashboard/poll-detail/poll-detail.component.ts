@@ -30,10 +30,19 @@ export class PollDetailComponent implements OnInit {
     }
 
     public vote(): void {
-        this.poll.votes[this.poll.options.indexOf(this.selectedOption)]++;
-        this.pollService.put(this.poll._id, this.poll).subscribe(res => {
-            this.poll = res;
-            this.mdSnackBar.open(`You voted ${this.selectedOption}`);
-        });
+        if (!this.selectedOption) {
+            this.mdSnackBar.open('Please select an option! ;)');
+        }
+        else {
+            this.poll.votes[this.poll.options.indexOf(this.selectedOption)]++;
+            this.pollService.put(this.poll._id, this.poll).subscribe(res => {
+                this.poll = res;
+                this.mdSnackBar.open(`You voted ${this.selectedOption}`);
+            });
+        }
+    }
+
+    public getVotes() { 
+        return this.poll && this.poll.votes ? this.poll.votes.reduce((acc, v) => acc + v) : 0;
     }
 }
