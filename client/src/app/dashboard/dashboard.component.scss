@@ -5,14 +5,31 @@
 }
 
 .btn-remove {
-    transition: width 0.5s;
+    transition: all 0.5s;
     width: 0px;
     opacity: 0;
 }
 
-.votes-badge:hover {
-    .btn-remove {
-        width: 10px;
-        opacity: 1;
+.votes-badge {
+    outline: none;
+    &:hover {
+        .btn-remove {
+            width: 25px;
+            padding-left: 10px;
+            opacity: 1;
+        }
+    }
+}
+
+.caption {
+    font-size: 2rem;
+}
+
+.poll-card {
+    transition: background .5s ease;
+    margin-bottom: 20px;
+    cursor: pointer;
+    &:hover {
+        background-color: lighten(#424242, 10)
     }
 }

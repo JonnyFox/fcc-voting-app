@@ -9,7 +9,6 @@
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "sourceMap": true,
-        "sourceRoot": "src",
         "outDir": "../../dist/server",
         "typeRoots": [
             "node_modules/@types",

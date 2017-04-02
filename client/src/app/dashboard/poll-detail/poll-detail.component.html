@@ -1,0 +1,21 @@
+<div class="container">
+    <h1><a routerLink="/dashboard" style="text-decoration: none; color: white;"><span class="mdi mdi-arrow-left" rou></span></a> {{poll.name}} <small style="float: right;"> {{getVotes()}} votes</small></h1>
+    <hr>
+    <md-card>
+        <div class="col-xs-4">
+            <md-select class="combobox" [(ngModel)]="selectedOption">
+                <md-option *ngFor="let opt of poll.options" [value]="opt">{{opt}}</md-option>
+            </md-select>
+            <button md-button (click)="vote()">Vote!</button>
+        </div>
+        <div class="col-xs-8">
+            <div style="display: block; float:right; width: 500px; height: 500px">
+                <canvas baseChart
+                    [data]="poll.votes"
+                    [labels]="poll.options"
+                    chartType="doughnut"></canvas>
+            </div>
+        </div>
+        <div class="clear-both"></div>
+    </md-card>
+</div>

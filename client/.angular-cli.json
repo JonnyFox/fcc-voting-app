@@ -1,7 +1,6 @@
 {
     "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
     "project": {
-        "version": "1.0.0-beta.32.3",
         "name": "voting-app"
     },
     "apps": [{
@@ -15,15 +14,19 @@
         "main": "main.ts",
         "polyfills": "polyfills.ts",
         "test": "test.ts",
-        "tsconfig": "tsconfig.json",
+        "tsconfig": "tsconfig.app.json",
+        "testTsconfig": "tsconfig.spec.json",
         "prefix": "app",
         "styles": [
-            "../node_modules/mdi/css/materialdesignicons.min.css",
             "../node_modules/bootstrap/dist/css/bootstrap.min.css",
             "../node_modules/animate.css/animate.min.css",
+            "../node_modules/mdi/css/materialdesignicons.min.css",
+            "app-theme.scss",
             "styles.scss"
         ],
-        "scripts": [],
+        "scripts": [
+            "../node_modules/chart.js/dist/Chart.js"
+        ],
         "environmentSource": "environments/environment.ts",
         "environments": {
             "dev": "environments/environment.ts",
@@ -35,13 +38,15 @@
             "config": "./protractor.conf.js"
         }
     },
-    "lint": [{
-            "files": "src/**/*.ts",
-            "project": "src/tsconfig.json"
+    "lint": [
+        {
+            "project": "src/tsconfig.app.json"
         },
         {
-            "files": "e2e/**/*.ts",
-            "project": "e2e/tsconfig.json"
+            "project": "src/tsconfig.spec.json"
+        },
+        {
+            "project": "e2e/tsconfig.e2e.json"
         }
     ],
     "test": {
