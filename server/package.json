@@ -9,7 +9,7 @@
     "start": "node ../dist/server/server.js",
     "serve": "concurrently \"npm run build.w\" \"nodemon ../dist/server/server.js\"",
     "lint": "tslint \"src/**/*.ts\"",
-    "prebuild": "rimraf dist",
+    "prebuild": "npm install && rimraf ../dist/public",
     "build": "npm run copy-deps && tsc --p ./src",
     "build.w": "npm run copy-deps && tsc --p ./src -w"
   },
