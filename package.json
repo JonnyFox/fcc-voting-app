@@ -5,7 +5,6 @@
   "angular-cli": {},
   "scripts": {
     "clean": "rimraf dist",
-    "postinstall" : "npm run build",
     "start": "node ./dist/server/server.js",
     "prebuild": "npm run clean",
     "build": "concurrently \"cd server && npm i && npm run build\" \"cd client && npm i && npm run build\""
