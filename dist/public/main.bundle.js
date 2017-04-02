@@ -777,7 +777,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var PollService = (function (_super) {
     __extends(PollService, _super);
     function PollService(http) {
-        var _this = _super.call(this, http, 'http://localhost/api/polls') || this;
+        var _this = _super.call(this, http, 'https://fcc-voting-app3.herokuapp.com/api/polls') || this;
         _this.http = http;
         return _this;
     }
